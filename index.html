@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDIC: Distributed Image Compression with Multimodal Side Information at Extremely Low Bitrates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.7;
+            background-color: #FAFAFA;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px; 
+            margin: 40px auto;
+            padding: 50px 60px;
+            background-color: #FFFFFF;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border-radius: 12px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 30px 20px; margin: 0; border-radius: 0; }
+        }
+        h1.title {
+            font-size: 2.4em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #111;
+            line-height: 1.3;
+        }
+        h2.section-title {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-top: 60px;
+            margin-bottom: 25px;
+            color: #222;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 10px;
+        }
+        .authors {
+            text-align: center;
+            font-size: 1.15em;
+            color: #4A5568;
+            margin-bottom: 8px;
+        }
+        .affiliations {
+            text-align: center;
+            font-size: 1em;
+            color: #718096;
+            margin-bottom: 25px;
+        }
+        .venue {
+            display: inline-block;
+            background-color: #EBF4FF;
+            color: #3182CE;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 30px;
+        }
+        .links {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .links a {
+            display: inline-block;
+            background-color: #1A202C;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+        }
+        .links a:hover {
+            background-color: #4A5568;
+            transform: translateY(-2px);
+        }
+        
+        /* 摘要样式优化 */
+        .abstract-section {
+            background-color: #F8FAFC;
+            padding: 30px 40px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+        }
+        .abstract-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2D3748;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .abstract-text {
+            font-size: 1.05em;
+            text-align: justify;
+            color: #4A5568;
+            margin: 0;
+        }
+
+        /* 核心高亮灰色框 */
+        .highlight-box {
+            background-color: #EDF2F7;
+            border-left: 4px solid #4A5568;
+            padding: 20px 25px;
+            margin: 30px 0;
+            color: #2D3748;
+            font-size: 1.05em;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 6px;
+        }
+        .caption {
+            font-size: 0.95em;
+            color: #718096;
+            text-align: justify;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .flex-container {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap; /*
+        }
+        .flex-item {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 1. 标题与作者信息 -->
+    <h1 class="title">Distributed Image Compression with Multimodal Side Information at Extremely Low Bitrates</h1>
+    
+    <div style="text-align: center;">
+        <div class="venue">CVPR 2026 Accepted</div>
+    </div>
+
+    <div class="authors">
+        Guojun Xu, Mingyang Zhang, Jianwen Xiang, Cheng Tan, Yanchao Yang, Junwei Zhou<sup>*</sup>
+    </div>
+    <div class="affiliations">
+        School of Computer Science and Artificial Intelligence, Wuhan University of Technology
+    </div>
+
+    <!-- 链接 -->
+    <div class="links">
+        <a href="你的PDF链接或arXiv链接">📄 Paper</a>
+        <a href="你的Github仓库链接">💻 Code</a>
+    </div>
+
+    <!-- 2. 摘要 (Abstract) -->
+    <div class="abstract-section">
+        <div class="abstract-title">Abstract</div>
+        <p class="abstract-text">
+            Distributed Image Compression (DIC) is crucial for multi-view transmission, especially when operating at extremely low bitrates (< 0.1 bpp). Its core challenge is effectively utilizing side information to achieve high-quality reconstruction under strict bitrate budgets. However, existing DIC approaches struggle to exploit global context and object-level details from side information, leading to local blurring and the loss of fine details in the reconstruction. To address these limitations, we propose a Multimodal DIC framework (MDIC), which, for the first time, leverages side information in a multimodal manner into the DIC paradigm, effectively preserving fine-grained local details and enhancing global perceptual quality in reconstructed images. Specifically, we introduce a text-to-image diffusion-based decoder conditioned on textual side information extracted from correlated images to capture shared global semantics. Moreover, we design a feature-mask generator, supervised by a multimodal fine-grained alignment task, to strengthen the exploitation of visual side information. The generated mask serves two purposes: first, it guides the extraction of fine-grained details from losslessly transmitted side information to preserve the semantic consistency of reconstructed details; second, it regulates the extraction of clustered feature representations from the quantized VQ-VAE embeddings, compensating for category information lost under the extreme compression of the primary image. Extensive experiments on the widely used KITTI Stereo and Cityscapes datasets demonstrate that MDIC achieves state-of-the-art perceptual quality at extremely low bitrates.
+        </p>
+    </div>
+
+    <!-- 3. Intro 中的图 (对比/动机) -->
+    <h2 class="section-title">1. Motivation</h2>
+    <!-- 建议此处放入论文中的 Figure 1 或 Figure 2 (效果对比图) -->
+    <img src="./images/intro_figure.png" alt="Motivation Figure">
+    <div class="caption">
+        <strong>Figure 1. Comparison of DIC Frameworks.</strong> (a) The existing VAE-based distributed coding framework only with visual side information. (b) Our proposed diffusion-based pipeline (MDIC) with multimodal side information, which avoids local pixel averaging and yields sharper reconstructions from highly compressed data.
+    </div>
+
+    <!-- 4. 整体模型图 (Pipeline) -->
+    <h2 class="section-title">2. Proposed Framework (MDIC)</h2>
+    <img src="./images/pipeline_figure.png" alt="MDIC Framework Overview">
+    <div class="caption">
+        <strong>Figure 2. Overview of the proposed MDIC framework.</strong> The input view \( I_x \) is lossy-compressed, while the correlated view \( I_y \) is transmitted losslessly as side information. Both views are encoded into latent spaces by the LDM encoder. Under the supervision of textual global semantics \( z_{text} \), a visual mask \( m_v \) is generated to regulate the extraction of clustered feature representations from the quantized VQ-VAE embeddings, effectively compensating for category information lost under extreme compression.
+    </div>
+    
+    <!-- 使用高级灰色框总结模型的两大亮点 -->
+    <div class="highlight-box">
+        <strong>Key Insights:</strong>
+        <br><br>
+        <strong>1. Text-Supervised Visual Mask:</strong> Restores category semantics lost in VQ-VAE compression and extracts fine-grained details from visual side information, ensuring semantically faithful reconstruction.
+        <br>
+        <strong>2. Multimodal Denoising:</strong> A pre-trained text-to-image diffusion model conditioned on multimodal side information generates high-fidelity perceptual details even when the primary image is heavily compressed (< 0.1 bpp).
+    </div>
+
+    <!-- 5. 可视化结果 -->
+    <h2 class="section-title">3. Qualitative Results</h2>
+    <!-- 此处放入论文中最大最震撼的那张可视化对比图 (Figure 8) -->
+    <img src="./images/visual_results.png" alt="Qualitative Visual Results">
+    <div class="caption">
+        <strong>Figure 3. Visualization results on KITTI Stereo and Cityscapes datasets.</strong> Compared with existing joint coding methods (BiSIC) and diffusion-based LIC frameworks (Perco, RDEIC), our MDIC effectively avoids local distortions, artifact patterns, and severe global blurring, achieving superior perceptual quality with consistent semantics at extremely low bitrates.
+    </div>
+
+    <!-- 6. 定量的两张折线图 -->
+    <h2 class="section-title">4. Quantitative Evaluation</h2>
+    <p class="caption" style="margin-top: -15px;">
+        Extensive experiments demonstrate that MDIC achieves state-of-the-art perceptual quality at extremely low bitrates compared to SOTA DIC, SIC, and LIC methods.
+    </p>
+    
+    <!-- 响应式 Flexbox 并排布局 -->
+    <div class="flex-container">
+        <div class="flex-item">
+            <!-- 论文中的 Figure 6：感知指标折线图 -->
+            <img src="./images/quantitative_perception.png" alt="Perception Evaluation">
+            <div class="caption" style="text-align: center;">
+                <strong>Perception evaluation</strong> (LPIPS↓, FID↓, DISTS↓)
+            </div>
+        </div>
+        <div class="flex-item">
+            <!-- 论文中的 Figure 7：失真指标折线图 -->
+            <img src="./images/quantitative_distortion.png" alt="Distortion Evaluation">
+            <div class="caption" style="text-align: center;">
+                <strong>Distortion evaluation</strong> (PSNR↑, MS-SSIM↑, mIoU↑)
+            </div>
+        </div>
+    </div>
+
+    <!-- BibTeX 引用 -->
+    <h2 class="section-title" style="margin-top: 50px;">Citation</h2>
+    <pre style="background-color: #F8FAFC; padding: 20px; border-radius: 8px; font-size: 0.9em; overflow-x: auto; border: 1px solid #E2E8F0; color: #4A5568;"><code>@inproceedings{xu2026mdic,
+  title={Distributed Image Compression with Multimodal Side Information at Extremely Low Bitrates},
+  author={Xu, Guojun and Zhang, Mingyang and Xiang, Jianwen and Tan, Cheng and Yang, Yanchao and Zhou, Junwei},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
+}</code></pre>
+
+</div>
+
+</body>
+</html>
