@@ -171,8 +171,8 @@
     </div>
 
     <div class="links">
-        <a href="你的PDF链接或arXiv链接">📄 Paper</a>
-        <a href="你的Github仓库链接">💻 Code</a>
+        <a href="arXiv link">📄 Paper</a>
+        <a href="https://github.com/Mommqq/MDIC">💻 Code</a>
     </div>
     <div class="abstract-section">
         <div class="abstract-title">Abstract</div>
@@ -195,7 +195,6 @@
         <strong>Figure 2. Overview of the proposed MDIC framework.</strong> The input view \( I_x \) is lossy-compressed, while the correlated view \( I_y \) is transmitted losslessly as side information. Both views are encoded into latent spaces by the LDM encoder. Under the supervision of textual global semantics \( z_{text} \), a visual mask \( m_v \) is generated to regulate the extraction of clustered feature representations from the quantized VQ-VAE embeddings, effectively compensating for category information lost under extreme compression.
     </div>
     
-    <!-- 使用高级灰色框总结模型的两大亮点 -->
     <div class="highlight-box">
         <strong>Key Insights:</strong>
         <br><br>
@@ -219,21 +218,22 @@
     </p>
     
 
-    <div class="flex-container">
+    <div class="flex-container" style="display: flex; flex-direction: column;">
+        
         <div class="flex-item">
-
             <img src="./images/quantitative_perception.png" alt="Perception Evaluation">
             <div class="caption" style="text-align: center;">
                 <strong>Perception evaluation</strong> (LPIPS↓, FID↓, DISTS↓)
             </div>
         </div>
+    
         <div class="flex-item">
-
             <img src="./images/quantitative_distortion.png" alt="Distortion Evaluation">
             <div class="caption" style="text-align: center;">
                 <strong>Distortion evaluation</strong> (PSNR↑, MS-SSIM↑, mIoU↑)
             </div>
         </div>
+    
     </div>
 
 
